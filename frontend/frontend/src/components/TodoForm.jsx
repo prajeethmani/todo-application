@@ -1,5 +1,5 @@
-import {useState} from "react";
 import axios from "axios";
+import { useState } from "react";
 
 function TodoForm({ todos,setTodos}){
     const [title,setTitle] = useState("");
@@ -9,11 +9,16 @@ function TodoForm({ todos,setTodos}){
             alert("Please enter a todo");
             return;
         }
-        const res = await axios.post("https://localhost:5000/api/todos",{
-            title,
-        });
-        setTodos([...todos,res.data]);
-        setTitle("");
+        try {
+            const res = await axios.post("http://localhost:5000/api/todos",{
+                title,
+            });
+            setTodos([...todos,res.data]);
+            setTitle("");
+        } catch (error) {
+            alert("Failed to add todo");
+            console.error(error);
+        }
     };
 
     return (

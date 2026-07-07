@@ -2,12 +2,13 @@ import axios from "axios";
 
 function TodoList({todos,setTodos}){
     const deleteTodo = async (id) =>{
-        await axios.delete('https://localhost:5000/api/todos/$(id)');
+        await axios.delete(`http://localhost:5000/api/todos/${id}`);
         setTodos(todos.filter((todo)=>todo._id !==id));
     };
 
-    const completeTodos = async (id,complete)=>{
-        await axios.put('http://localhost:5000/api/todos/$(id)',{
+    const completeTodo = async (id,completed)=>{
+        await axios.put(`http://localhost:5000/api/todos/${id}`,
+        {
             completed:!completed,
         });
         setTodos(

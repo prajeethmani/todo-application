@@ -19,8 +19,8 @@ router.post("/",async (req,res)=>{
     res.json(todo);
 });
 
-router.put("/id",async (req,res)=>{
-    await Todo.findByIdAndUpdate(req,params.id,{
+router.put("/:id",async (req,res)=>{
+    await Todo.findByIdAndUpdate(req.params.id,{
         completed:req.body.completed
     });
 
@@ -29,8 +29,8 @@ router.put("/id",async (req,res)=>{
     });
 });
 
-router.delete("/.id",async (req,res) =>{
-    await Todo.findByIdAndDelete(req,params.id);
+router.delete("/:id",async (req,res) =>{
+    await Todo.findByIdAndDelete(req.params.id);
 
     res.json({
         message:"Delected"

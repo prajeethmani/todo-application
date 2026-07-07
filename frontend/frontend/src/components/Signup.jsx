@@ -1,5 +1,5 @@
-import {useState} from "react";
 import axios from "axios";
+import { useState } from "react";
 
 function Signup({setPage}){
     const [name , setName] = useState("");
@@ -26,14 +26,14 @@ function Signup({setPage}){
 
             <input type="email" placeholder="Email" onChange={(e)=> setEmail(e.target.value)} />
 
-            <input type="password" placeholder="password" onChange={(e)=> set.Password(e.target.value)} />
+            <input type="password" placeholder="password" onChange={(e)=> setPassword(e.target.value)} />
 
 
             <button onClick={signup}>Signup</button>
 
             <p>
                 Already have an account ?
-                <Button onClick={()=> setPage("login")} >Login </Button>
+                <button onClick={()=> setPage("login")} >Login</button>
             </p>
         </div>
     );
